@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3DM Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body
+    class="bg-[#DDEAFC] min-h-screen flex items-center justify-center h-screen"
+  >
+    <div class="w-full max-w-6xl flex overflow-hidden">
+      <!-- سمت چپ: تصویر و متن -->
+      <div
+        class="hidden md:flex flex-col justify-between items-center bg-form-side w-1/2 p-10"
+      >
+        <img
+          src="./images/Logo.png"
+          alt="3DM Logo"
+          class="w-32 mb-8 self-start form-side-logo"
+        />
+        <div class="self-start mt-8">
+          <h2 class="form-side-title">3DM</h2>
+          <p class="form-side-desc">
+            Explore 3D Icons, Mockups and Illustrations here!
+          </p>
+        </div>
+        <img src="./images/image.png" alt="3D Illustration" class="w-96 mt-8" />
+      </div>
+      <!-- سمت راست: فرم لاگین -->
+      <div class="flex-1 form-container animate-flip-in">
+        <div class="flex justify-end mb-4">
+          <span class="text-gray-500 text-sm"
+            >English (US) <i class="fa-solid fa-angle-down ml-1"></i
+          ></span>
+        </div>
+        <h2 class="form-title">Login</h2>
+        <form class="space-y-4">
+          <div class="relative">
+            <input
+              type="email"
+              placeholder="Email Address"
+              class="form-input"
+            />
+            <i class="fa fa-envelope form-icon"></i>
+          </div>
+          <div class="relative">
+            <input type="password" placeholder="Password" class="form-input" />
+            <i class="fa fa-eye-slash form-icon cursor-pointer"></i>
+          </div>
+          <div class="flex items-center justify-between mt-2">
+            <div class="flex items-center">
+              <input type="checkbox" id="remember" class="form-checkbox mr-2" />
+              <label for="remember" class="text-sm text-gray-600"
+                >Remember me</label
+              >
+            </div>
+            <a href="#" class="form-link text-sm">Forgot password?</a>
+          </div>
+          <button type="submit" class="form-btn w-full">Login</button>
+        </form>
+        <div class="flex items-center my-6">
+          <div class="flex-1 h-px bg-gray-200"></div>
+          <span class="mx-4 text-gray-400">Or Login With</span>
+          <div class="flex-1 h-px bg-gray-200"></div>
+        </div>
+        <div class="form-social">
+          <button class="form-social-btn text-blue">
+            <i class="fab fa-google"></i>
+          </button>
+          <button class="form-social-btn text-blue-600">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button class="form-social-btn text-pink-500">
+            <i class="fab fa-instagram"></i>
+          </button>
+          <button class="form-social-btn text-blue-700">
+            <i class="fab fa-linkedin-in"></i>
+          </button>
+        </div>
+        <div class="text-center text-gray-600 text-sm">
+          Don't have an account?
+          <a href="index.html" class="form-link">Sign Up</a>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

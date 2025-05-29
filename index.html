@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3DM Sign Up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#BC2666",
+              secondary: "#2F1F53",
+              accent: "#34A853",
+              info: "#4285F4",
+              gray1: "#6B6B6B",
+              gray2: "#DDEAFC",
+              error: "#EB4335",
+              warning: "#FBBC05",
+              blue: "#1877F2",
+            },
+            fontFamily: {
+              sans: ["Vazirmatn", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap");
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        overflow: hidden;
+        height: 100vh;
+      }
+    </style>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body
+    class="bg-[#DDEAFC] min-h-screen flex items-center justify-center h-screen"
+  >
+    <div class="w-full max-w-6xl flex overflow-hidden">
+      <!-- سمت چپ: تصویر و متن -->
+      <div
+        class="hidden md:flex flex-col justify-between items-center bg-form-side w-1/2 p-10"
+      >
+        <img
+          src="./images/Logo.png"
+          alt="3DM Logo"
+          class="w-32 mb-8 self-start form-side-logo"
+        />
+        <div class="self-start mt-8">
+          <h2 class="form-side-title">3DM</h2>
+          <p class="form-side-desc">
+            Explore 3D Icons, Mockups and Illustrations here!
+          </p>
+        </div>
+        <img src="./images/image.png" alt="3D Illustration" class="w-96 mt-8" />
+      </div>
+      <!-- سمت راست: فرم -->
+      <div
+        class="flex-1 flex flex-col justify-center px-8 py-12 bg-white rounded-tr-[200px] shadow-2xl min-h-[700px] form-container animate-flip-in"
+      >
+        <div class="flex justify-end mb-4">
+          <span class="text-gray-500 text-sm"
+            >English (US) <i class="fa-solid fa-angle-down ml-1"></i
+          ></span>
+        </div>
+        <h2 class="form-title text-2xl font-bold text-primary mb-6">
+          Create Account
+        </h2>
+        <form class="space-y-4">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Full Name"
+              class="form-input w-full border-b-2 border-gray-200 focus:border-primary outline-none py-2 pr-10 text-gray-700 placeholder-gray-400 transition"
+            />
+            <i
+              class="fa fa-user form-icon absolute right-2 top-3 text-gray-400"
+            ></i>
+          </div>
+          <div class="relative">
+            <input
+              type="email"
+              placeholder="Email Address"
+              class="form-input w-full border-b-2 border-gray-200 focus:border-primary outline-none py-2 pr-10 text-gray-700 placeholder-gray-400 transition"
+            />
+            <i
+              class="fa fa-envelope form-icon absolute right-2 top-3 text-gray-400"
+            ></i>
+          </div>
+          <div class="relative">
+            <input
+              type="password"
+              placeholder="Password"
+              class="form-input w-full border-b-2 border-gray-200 focus:border-primary outline-none py-2 pr-10 text-gray-700 placeholder-gray-400 transition"
+            />
+            <i
+              class="fa fa-eye-slash form-icon absolute right-2 top-3 text-gray-400 cursor-pointer"
+            ></i>
+          </div>
+          <div class="flex items-center mt-2">
+            <input
+              type="checkbox"
+              id="terms"
+              class="form-checkbox accent-primary mr-2"
+              checked
+            />
+            <label for="terms" class="text-sm text-gray-600"
+              >I accept the
+              <a href="#" class="form-link text-primary underline"
+                >terms of use</a
+              >
+              and
+              <a href="#" class="form-link text-primary underline"
+                >privacy policy</a
+              ></label
+            >
+          </div>
+          <button
+            type="submit"
+            class="form-btn w-full bg-primary text-white rounded-full py-3 mt-4 text-lg font-bold shadow-md hover:bg-[#a01e56] transition"
+          >
+            Sign Up
+          </button>
+        </form>
+        <div class="flex items-center my-6">
+          <div class="flex-1 h-px bg-gray-200"></div>
+          <span class="mx-4 text-gray-400">Or Sign Up With</span>
+          <div class="flex-1 h-px bg-gray-200"></div>
+        </div>
+        <div class="form-social flex justify-center space-x-4 mb-4">
+          <button
+            class="form-social-btn bg-white border border-gray-200 rounded-full p-3 text-blue shadow hover:bg-blue-50 transition"
+          >
+            <i class="fab fa-google"></i>
+          </button>
+          <button
+            class="form-social-btn bg-white border border-gray-200 rounded-full p-3 text-blue-600 shadow hover:bg-blue-50 transition"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button
+            class="form-social-btn bg-white border border-gray-200 rounded-full p-3 text-pink-500 shadow hover:bg-pink-50 transition"
+          >
+            <i class="fab fa-instagram"></i>
+          </button>
+          <button
+            class="form-social-btn bg-white border border-gray-200 rounded-full p-3 text-blue-700 shadow hover:bg-blue-50 transition"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </button>
+        </div>
+        <div class="text-center text-gray-600 text-sm">
+          Already have an account?
+          <a href="login.html" class="form-link text-primary font-bold"
+            >Sing In</a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
