@@ -1,7 +1,7 @@
 # 3DM Auth UI
 
 فرم لاگین و ثبت‌نام مدرن با طراحی حرفه‌ای، انیمیشن‌های جذاب و پیام‌های Toast  
-ساخته شده با **HTML + TailwindCSS + TypeScript + FontAwesome**
+ساخته شده با **HTML + TailwindCSS + javascript + FontAwesome**
 
 ---
 
