@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3DM Sign Up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <!-- فونت مدرن -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', 'Vazirmatn', sans-serif;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .glass-btn {
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+        backdrop-filter: blur(4px);
+        border-radius: 9999px;
+        transition: all 0.3s;
+        box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.17);
+      }
+      .glass-btn:hover {
+        background: rgba(255,255,255,0.4);
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.27);
+      }
+      .glass-input {
+        background: rgba(255,255,255,0.25);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 9999px;
+        padding: 0.75rem 1.5rem;
+        color: #222;
+        transition: border 0.2s;
+      }
+      .glass-input:focus {
+        border: 1.5px solid #60a5fa;
+        outline: none;
+        background: rgba(255,255,255,0.4);
+      }
+      .social-btn {
+        transition: transform 0.2s;
+      }
+      .social-btn:hover {
+        transform: scale(1.15) rotate(-6deg);
+      }
+    </style>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.96); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      @keyframes fadeOut {
+        from { opacity: 1; transform: scale(1); }
+        to { opacity: 0; transform: scale(0.96); }
+      }
+      @keyframes shake {
+        10%, 90% { transform: translateX(-2px); }
+        20%, 80% { transform: translateX(4px); }
+        30%, 50%, 70% { transform: translateX(-8px); }
+        40%, 60% { transform: translateX(8px); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.4s forwards;
+      }
+      .animate-fade-out {
+        animation: fadeOut 0.4s forwards;
+      }
+      .animate-shake {
+        animation: shake 0.4s;
+      }
+      .hidden { display: none !important; }
+      .toast {
+        position: fixed;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(30,41,59,0.95);
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.17);
+        z-index: 9999;
+        font-size: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .toast.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .dark-mode {
+        background: linear-gradient(135deg, #232526 0%, #414345 100%) !important;
+      }
+      .dark-mode .glass {
+        background: rgba(40, 40, 60, 0.25);
+        color: #fff;
+      }
+      .dark-mode input, .dark-mode .glass-input {
+        color: #fff;
+        background: rgba(60,60,80,0.25);
+      }
+      .dark-mode .glass-btn {
+        background: rgba(60,60,80,0.2);
+        color: #fff;
+      }
+      .dark-mode .glass-btn:hover {
+        background: rgba(60,60,80,0.4);
+      }
+      .dark-mode .social-btn {
+        color: #fff;
+      }
+      .modern-checkbox {
+        appearance: none;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 0.5rem;
+        border: 2px solid #60a5fa;
+        background: rgba(255,255,255,0.2);
+        transition: background 0.2s, border 0.2s;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+      }
+      .modern-checkbox:checked {
+        background: linear-gradient(135deg, #60a5fa 60%, #a78bfa 100%);
+        border-color: #a78bfa;
+      }
+      .modern-checkbox:checked::after {
+        content: '';
+        position: absolute;
+        left: 0.35rem;
+        top: 0.1rem;
+        width: 0.3rem;
+        height: 0.6rem;
+        border: solid #fff;
+        border-width: 0 0.2rem 0.2rem 0;
+        transform: rotate(45deg);
+      }
+      .password-strength {
+        height: 0.4rem;
+        border-radius: 0.5rem;
+        margin-top: 0.3rem;
+        background: #e5e7eb;
+        overflow: hidden;
+      }
+      .password-strength-bar {
+        height: 100%;
+        border-radius: 0.5rem;
+        transition: width 0.3s, background 0.3s;
+      }
+      .spinner {
+        border: 3px solid #fff;
+        border-top: 3px solid #60a5fa;
+        border-radius: 50%;
+        width: 1.2rem;
+        height: 1.2rem;
+        animation: spin 0.7s linear infinite;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-center justify-center" style="position:relative;overflow:hidden;">
+    <!-- Galaxy Background Canvas -->
+    <canvas id="galaxy-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;"></canvas>
+    <div id="auth-container" class="w-full max-w-md p-8 glass animate-fade-in" style="z-index:2;position:relative;">
+      <!-- Login Form -->
+      <div id="login-form" class="">
+        <div class="flex flex-col items-center">
+          <img src="./images/Logo.png" alt="3DM Logo" class="w-20 mb-4" />
+          <h2 class="text-3xl font-bold text-white mb-2 drop-shadow">3DM Login</h2>
+          <p class="text-white/80 mb-6 text-center">Explore 3D Icons, Mockups and Illustrations here!</p>
+        </div>
+        <form class="space-y-5">
+          <div class="relative">
+            <input type="email" placeholder="Email Address" class="glass-input w-full pr-12" />
+            <i class="fa fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-blue-400"></i>
+          </div>
+          <div class="relative">
+            <input type="password" placeholder="Password" class="glass-input w-full pr-12" />
+            <i class="fa fa-eye-slash absolute right-4 top-1/2 -translate-y-1/2 text-pink-400 cursor-pointer"></i>
+          </div>
+          <div class="flex items-center justify-between">
+            <label class="flex items-center text-white/80 cursor-pointer select-none">
+              <input type="checkbox" id="remember-login" class="modern-checkbox mr-2" />
+              Remember me
+            </label>
+            <a href="#" class="text-sm text-blue-200 hover:underline">Forgot password?</a>
+          </div>
+          <button type="submit" class="glass-btn w-full py-3 text-lg font-semibold text-white mt-2">Login</button>
+        </form>
+        <div class="flex items-center my-6">
+          <div class="flex-1 h-px bg-white/30"></div>
+          <span class="mx-4 text-white/60">Or Login With</span>
+          <div class="flex-1 h-px bg-white/30"></div>
+        </div>
+        <div class="flex justify-center gap-4 mb-4">
+          <button class="glass-btn social-btn text-red-500 p-3"><i class="fab fa-google"></i></button>
+          <button class="glass-btn social-btn text-blue-600 p-3"><i class="fab fa-facebook-f"></i></button>
+          <button class="glass-btn social-btn text-pink-500 p-3"><i class="fab fa-instagram"></i></button>
+          <button class="glass-btn social-btn text-blue-700 p-3"><i class="fab fa-linkedin-in"></i></button>
+        </div>
+        <div class="text-center text-white/80 text-sm">
+          Don't have an account?
+          <button id="switch-to-signup" class="text-blue-200 hover:underline bg-transparent border-none cursor-pointer focus:outline-none">Sign Up</button>
+        </div>
+      </div>
+      <!-- Signup Form -->
+      <div id="signup-form" class="hidden">
+        <div class="flex flex-col items-center">
+          <img src="./images/Logo.png" alt="3DM Logo" class="w-20 mb-4" />
+          <h2 class="text-3xl font-bold text-white mb-2 drop-shadow">Sign Up</h2>
+          <p class="text-white/80 mb-6 text-center">Create your account and join the 3D world!</p>
+        </div>
+        <form class="space-y-5">
+          <div class="relative">
+            <input type="text" placeholder="Full Name" class="glass-input w-full pr-12" />
+            <i class="fa fa-user absolute right-4 top-1/2 -translate-y-1/2 text-blue-400"></i>
+          </div>
+          <div class="relative">
+            <input type="email" placeholder="Email Address" class="glass-input w-full pr-12" />
+            <i class="fa fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-blue-400"></i>
+          </div>
+          <div class="relative">
+            <input type="password" placeholder="Password" class="glass-input w-full pr-12" id="signup-password" />
+            <i class="fa fa-eye-slash absolute right-4 top-1/2 -translate-y-1/2 text-pink-400 cursor-pointer toggle-password" data-target="signup-password"></i>
+            <div class="password-strength" id="signup-password-strength"><div class="password-strength-bar" style="width:0"></div></div>
+          </div>
+          <div class="relative">
+            <input type="password" placeholder="Confirm Password" class="glass-input w-full pr-12" id="signup-confirm" />
+            <i class="fa fa-eye-slash absolute right-4 top-1/2 -translate-y-1/2 text-pink-400 cursor-pointer toggle-password" data-target="signup-confirm"></i>
+          </div>
+          <button type="submit" class="glass-btn w-full py-3 text-lg font-semibold text-white mt-2">Sign Up</button>
+        </form>
+        <div class="flex items-center my-6">
+          <div class="flex-1 h-px bg-white/30"></div>
+          <span class="mx-4 text-white/60">Or Sign Up With</span>
+          <div class="flex-1 h-px bg-white/30"></div>
+        </div>
+        <div class="flex justify-center gap-4 mb-4">
+          <button class="glass-btn social-btn text-red-500 p-3"><i class="fab fa-google"></i></button>
+          <button class="glass-btn social-btn text-blue-600 p-3"><i class="fab fa-facebook-f"></i></button>
+          <button class="glass-btn social-btn text-pink-500 p-3"><i class="fab fa-instagram"></i></button>
+          <button class="glass-btn social-btn text-blue-700 p-3"><i class="fab fa-linkedin-in"></i></button>
+        </div>
+        <div class="text-center text-white/80 text-sm">
+          Already have an account?
+          <button id="switch-to-login" class="text-blue-200 hover:underline bg-transparent border-none cursor-pointer focus:outline-none">Login</button>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+    <div id="toast" class="toast"></div>
+    <script>
+      // Animated 3D Starfield Galaxy Background
+      const canvas = document.getElementById('galaxy-bg');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      let w = window.innerWidth, h = window.innerHeight;
+      function resizeGalaxy() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+      }
+      function createStars() {
+        stars = [];
+        for (let i = 0; i < 180; i++) {
+          let angle = Math.random() * Math.PI * 2;
+          let radius = Math.random() * (w < h ? w : h) * 0.45;
+          let depth = Math.random() * 0.7 + 0.3;
+          stars.push({
+            x: w/2 + Math.cos(angle) * radius,
+            y: h/2 + Math.sin(angle) * radius,
+            z: depth,
+            o: Math.random() * 0.5 + 0.5,
+            s: Math.random() * 0.5 + 0.2,
+            tw: Math.random() * Math.PI * 2,
+            angle,
+            radius
+          });
+        }
+      }
+      function moveAndDrawStars() {
+        ctx.clearRect(0, 0, w, h);
+        for (let star of stars) {
+          // Move star outward from center
+          star.radius += 0.7 * star.z;
+          star.x = w/2 + Math.cos(star.angle) * star.radius;
+          star.y = h/2 + Math.sin(star.angle) * star.radius;
+          // Twinkle
+          ctx.save();
+          ctx.globalAlpha = star.o * (0.7 + 0.3 * Math.sin(star.tw));
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, (star.z * 1.5), 0, 2 * Math.PI);
+          ctx.fillStyle = '#fff';
+          ctx.shadowColor = '#a5b4fc';
+          ctx.shadowBlur = 8;
+          ctx.fill();
+          ctx.restore();
+          star.tw += star.s * 0.02;
+          // Respawn if out of bounds
+          if (star.x < -50 || star.x > w+50 || star.y < -50 || star.y > h+50) {
+            star.angle = Math.random() * Math.PI * 2;
+            star.radius = Math.random() * 20;
+            star.z = Math.random() * 0.7 + 0.3;
+            star.o = Math.random() * 0.5 + 0.5;
+            star.s = Math.random() * 0.5 + 0.2;
+            star.tw = Math.random() * Math.PI * 2;
+            star.x = w/2 + Math.cos(star.angle) * star.radius;
+            star.y = h/2 + Math.sin(star.angle) * star.radius;
+          }
+        }
+      }
+      function animateGalaxy() {
+        moveAndDrawStars();
+        requestAnimationFrame(animateGalaxy);
+      }
+      resizeGalaxy();
+      createStars();
+      animateGalaxy();
+      window.addEventListener('resize', () => {
+        resizeGalaxy();
+        createStars();
+      });
+
+      // Dark mode toggle (with localStorage persistence)
+      const darkModeBtn = document.createElement('button');
+      darkModeBtn.innerHTML = '<i class="fa fa-moon"></i>';
+      darkModeBtn.className = 'absolute top-4 left-4 z-20 glass-btn p-2 text-white';
+      darkModeBtn.title = 'Toggle dark mode';
+      document.body.appendChild(darkModeBtn);
+
+      // On load: apply saved theme
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      function updateDarkModeIcon() {
+        if (document.body.classList.contains('dark-mode')) {
+          darkModeBtn.innerHTML = '<i class="fa fa-sun"></i>';
+        } else {
+          darkModeBtn.innerHTML = '<i class="fa fa-moon"></i>';
+        }
+      }
+      updateDarkModeIcon();
+      darkModeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('theme', 'dark');
+        } else {
+          localStorage.setItem('theme', 'light');
+        }
+        updateDarkModeIcon();
+      });
+
+      // --- Fix: Form Switch ---
+      const loginForm = document.getElementById('login-form');
+      const signupForm = document.getElementById('signup-form');
+      const switchToSignup = document.getElementById('switch-to-signup');
+      const switchToLogin = document.getElementById('switch-to-login');
+      let animating = false;
+      function showForm(formToShow, formToHide) {
+        if (animating) return;
+        animating = true;
+        formToHide.classList.remove('animate-fade-in');
+        formToHide.classList.add('animate-fade-out');
+        setTimeout(() => {
+          formToHide.classList.add('hidden');
+          formToHide.classList.remove('animate-fade-out');
+          formToShow.classList.remove('hidden');
+          formToShow.classList.add('animate-fade-in');
+          setTimeout(() => {
+            formToShow.classList.remove('animate-fade-in');
+            animating = false;
+          }, 400);
+        }, 400);
+      }
+      if (switchToSignup) {
+        switchToSignup.addEventListener('click', function(e) {
+          e.preventDefault();
+          showForm(signupForm, loginForm);
+        });
+      }
+      if (switchToLogin) {
+        switchToLogin.addEventListener('click', function(e) {
+          e.preventDefault();
+          showForm(loginForm, signupForm);
+        });
+      }
+
+      // --- Fix: Show/hide password toggle ---
+      function updatePasswordToggles() {
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+          icon.onclick = function() {
+            const target = document.getElementById(this.dataset.target);
+            if (!target) return;
+            if (target.type === 'password') {
+              target.type = 'text';
+              this.classList.remove('fa-eye-slash');
+              this.classList.add('fa-eye');
+            } else {
+              target.type = 'password';
+              this.classList.remove('fa-eye');
+              this.classList.add('fa-eye-slash');
+            }
+          };
+        });
+      }
+      updatePasswordToggles();
+      // If forms are switched, re-apply toggles (in case DOM is changed)
+      [switchToSignup, switchToLogin].forEach(btn => {
+        if (btn) btn.addEventListener('click', () => setTimeout(updatePasswordToggles, 500));
+      });
+
+      // Password strength meter
+      function getPasswordStrength(pw) {
+        let score = 0;
+        if (pw.length >= 8) score++;
+        if (/[A-Z]/.test(pw)) score++;
+        if (/[0-9]/.test(pw)) score++;
+        if (/[^A-Za-z0-9]/.test(pw)) score++;
+        return score;
+      }
+      const signupPassword = document.getElementById('signup-password');
+      const signupStrength = document.getElementById('signup-password-strength').firstElementChild;
+      if (signupPassword) {
+        signupPassword.addEventListener('input', function() {
+          const val = this.value;
+          const score = getPasswordStrength(val);
+          let width = [0, 25, 50, 75, 100][score];
+          let color = ['#e5e7eb','#f87171','#fbbf24','#60a5fa','#22c55e'][score];
+          signupStrength.style.width = width + '%';
+          signupStrength.style.background = color;
+        });
+      }
+
+      // Real-time validation
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+      function showToast(msg, success = false) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.style.background = success ? 'rgba(34,197,94,0.95)' : 'rgba(239,68,68,0.95)';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+      // Shake animation helper
+      function shakeForm(form) {
+        form.classList.add('animate-shake');
+        setTimeout(() => form.classList.remove('animate-shake'), 400);
+      }
+
+      // Remember Me (localStorage)
+      const rememberLogin = document.getElementById('remember-login');
+      const loginEmail = document.querySelector('#login-form input[type="email"]');
+      if (rememberLogin && loginEmail) {
+        // On load
+        const saved = localStorage.getItem('rememberedEmail');
+        if (saved) {
+          loginEmail.value = saved;
+          rememberLogin.checked = true;
+        }
+        rememberLogin.addEventListener('change', function() {
+          if (this.checked) {
+            localStorage.setItem('rememberedEmail', loginEmail.value);
+          } else {
+            localStorage.removeItem('rememberedEmail');
+          }
+        });
+        loginEmail.addEventListener('input', function() {
+          if (rememberLogin.checked) {
+            localStorage.setItem('rememberedEmail', loginEmail.value);
+          }
+        });
+      }
+
+      // Form validation and submit
+      function disableBtn(btn, loading = true) {
+        btn.disabled = true;
+        if (loading) {
+          btn.innerHTML = '<span class="spinner"></span>' + btn.textContent;
+        }
+      }
+      function enableBtn(btn, origText) {
+        btn.disabled = false;
+        btn.innerHTML = origText;
+      }
+      // Login form
+      const loginFormEl = document.querySelector('#login-form form');
+      if (loginFormEl) {
+        const loginBtn = loginFormEl.querySelector('button[type="submit"]');
+        loginFormEl.addEventListener('submit', function(e) {
+          e.preventDefault();
+          let valid = true;
+          const email = loginFormEl.querySelector('input[type="email"]');
+          const password = loginFormEl.querySelector('input[type="password"]');
+          if (!validateEmail(email.value)) {
+            showToast('Invalid email address');
+            shakeForm(loginFormEl);
+            valid = false;
+          }
+          if (!password.value || password.value.length < 6) {
+            showToast('Password must be at least 6 characters');
+            shakeForm(loginFormEl);
+            valid = false;
+          }
+          if (!valid) return;
+          disableBtn(loginBtn);
+          setTimeout(() => {
+            enableBtn(loginBtn, 'Login');
+            showToast('Login successful!', true);
+          }, 1200);
+        });
+      }
+      // Signup form
+      const signupFormEl = document.querySelector('#signup-form form');
+      if (signupFormEl) {
+        const signupBtn = signupFormEl.querySelector('button[type="submit"]');
+        const email = signupFormEl.querySelector('input[type="email"]');
+        const password = document.getElementById('signup-password');
+        const confirm = document.getElementById('signup-confirm');
+        signupFormEl.addEventListener('submit', function(e) {
+          e.preventDefault();
+          let valid = true;
+          if (!validateEmail(email.value)) {
+            showToast('Invalid email address');
+            shakeForm(signupFormEl);
+            valid = false;
+          }
+          if (!password.value || password.value.length < 8) {
+            showToast('Password must be at least 8 characters');
+            shakeForm(signupFormEl);
+            valid = false;
+          }
+          if (password.value !== confirm.value) {
+            showToast('Passwords do not match');
+            shakeForm(signupFormEl);
+            valid = false;
+          }
+          if (!valid) return;
+          disableBtn(signupBtn);
+          setTimeout(() => {
+            enableBtn(signupBtn, 'Sign Up');
+            showToast('Signup successful!', true);
+          }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

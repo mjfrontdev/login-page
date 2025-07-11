@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap");
+
+:root {
+    --color-neutral-100: #ffffff;
+    --color-neutral-400: #8C92AC;
+    --color-neutral-600: #232B45;
+    --color-neutral-700: #1A2340;
+    --color-neutral-800: #0B1330;
+    --color-primary: #C05CFC;
+    --color-secondary-1: #1B2B5C;
+    --color-secondary-2: #1CC8F9;
+    --color-secondary-3: #2B3146;
+    --color-gradient-from: #C05CFC;
+    --color-gradient-to: #1CC8F9;
+}
+
+body {
+    font-family: "Vazirmatn", sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--color-secondary-1) 60%, var(--color-secondary-3) 100%);
+}
+
+/* انیمیشن‌های جابجایی بین صفحات با Tailwind */
+@keyframes flipIn {
+    0% {
+        transform: perspective(1000px) rotateY(90deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes flipOut {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(-90deg);
+        opacity: 0;
+    }
+}
+
+.animate-flip-in {
+    animation: flipIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-flip-out {
+    animation: flipOut 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* استایل‌های سفارشی برای فرم ثبت‌نام */
+.form-container {
+    box-shadow: 0 8px 32px 0 rgba(44, 44, 44, 0.10), 0 1.5px 4px 0 rgba(44, 44, 44, 0.04);
+    border-top-right-radius: 200px;
+    background: var(--color-neutral-100);
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2rem;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.form-title {
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-input {
+    border-bottom: 2px solid var(--color-neutral-400);
+    padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+    outline: none;
+    color: var(--color-neutral-700);
+    width: 100%;
+    font-size: 1rem;
+    background: transparent;
+    transition: border 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--color-primary);
+}
+
+.form-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    color: var(--color-neutral-400);
+    font-size: 1rem;
+}
+
+.form-btn {
+    background: linear-gradient(90deg, var(--color-gradient-from), var(--color-gradient-to));
+    color: #fff;
+    border-radius: 9999px;
+    padding: 0.75rem 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    box-shadow: 0 4px 16px 0 rgba(192, 92, 252, 0.10);
+    transition: background 0.2s;
+    border: none;
+}
+
+.form-btn:hover {
+    filter: brightness(0.95);
+}
+
+.form-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-social-btn {
+    background: var(--color-neutral-100);
+    border: 1px solid var(--color-neutral-400);
+    border-radius: 9999px;
+    padding: 0.75rem;
+    box-shadow: 0 2px 8px 0 rgba(44, 44, 44, 0.04);
+    font-size: 1.25rem;
+    transition: background 0.2s;
+}
+
+.form-social-btn:hover {
+    background: var(--color-secondary-2);
+    color: #fff;
+}
+
+.form-link {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.form-checkbox:checked {
+    accent-color: var(--color-primary);
+}
+
+/* پس‌زمینه سمت چپ فرم */
+.bg-form-side {
+    background: linear-gradient(135deg, var(--color-secondary-1) 60%, var(--color-secondary-3) 100%);
+}
+
+.form-side-title {
+    color: #FF4F8B;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.form-side-desc {
+    color: #B6C3E6;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.form-side-logo {
+    color: #FF4F8B;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+@media (max-width: 900px) {
+    .form-container {
+        border-top-right-radius: 100px;
+        min-height: 500px;
+        padding: 2rem 1rem;
+    }
+}
+
+body {
+  font-family: 'Poppins', 'Vazirmatn', sans-serif;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.glass-btn {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.17);
+}
+.glass-btn:hover {
+  background: rgba(255,255,255,0.4);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.27);
+}
+.glass-input {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  color: #222;
+  transition: border 0.2s;
+}
+.glass-input:focus {
+  border: 1.5px solid #60a5fa;
+  outline: none;
+  background: rgba(255,255,255,0.4);
+}
+.social-btn {
+  transition: transform 0.2s;
+}
+.social-btn:hover {
+  transform: scale(1.15) rotate(-6deg);
+}
