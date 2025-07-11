@@ -19,8 +19,8 @@ A modern, animated login/signup UI with a beautiful animated galaxy background, 
 ## Setup & Usage
 1. Clone the repo:
    ```bash
-   git clone <your-repo-url>
-   cd <project-folder>
+   git clone https://github.com/mjfrontdev/login-page/
+   cd login-page
    ```
 2. Open `index.html` in your browser.
 3. (Optional) Serve with a local server for best experience.
