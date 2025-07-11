@@ -25,11 +25,9 @@ A modern, animated login/signup UI with a beautiful animated galaxy background, 
 2. Open `index.html` in your browser.
 3. (Optional) Serve with a local server for best experience.
 
-## Screenshots
-> Add your screenshots here!
 
 ## فارسی
-یک فرم ورود/ثبت‌نام مدرن و انیمیشنی با پس‌زمینه کهکشانی، حالت تاریک، اعتبارسنجی زنده، نوار قدرت رمز عبور و امکانات حرفه‌ای دیگر. فقط کافیست فایل `index.html` را باز کنید و لذت ببرید!
+یک فرم ورود و ثبت نام انیمیشنی جذاب با قابلیت های ویژه
 
 ---
 
